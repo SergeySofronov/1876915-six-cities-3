@@ -19,7 +19,8 @@ function HistoryRouter({
   });
 
   useLayoutEffect(() => {
-    history.listen(setState);
+    const unsubscribe = history.listen(setState);
+    return () => unsubscribe();
   }, [history]);
 
   return (
